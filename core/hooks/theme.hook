@@ -1,0 +1,27 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Chubs
+ * Date: 12/6/2016
+ * Time: 6:59 AM
+ */
+function LoadActiveTheme() {
+    $theme = new theme();
+    $theme->LoadActiveTheme();
+}
+function LoadThemeCSS($path = "css", $mode = "recurse") {
+    $theme = new theme();
+    $theme->LoadCSS($path, $mode);
+}
+function LoadThemeJS($path = "js", $mode = "recurse") {
+    $theme = new theme();
+    $theme->LoadJS($path, $mode);
+}
+function ThemeIco($path = "favicon.ico") {
+    $theme = new theme();
+    $theme->LoadIco($path);
+}
+function ThemeNav($folder = "nav", $type) {
+    $theme = new theme();
+    $theme->ThemeNav($folder, $type);
+}

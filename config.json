@@ -1,0 +1,33 @@
+{
+  "database": {
+    "hostname"  : "localhost",
+    "username"  : "root",
+    "password"  : "",
+    "database"  : "website"
+  },
+  "SiteSettings": {
+    "sitename"  : "Doxramos.net",
+    "webmaster" : "green.morgan87@gmail.com",
+    "contactno" : "(253)275-8409",
+    "address"   : "5605 S M Street",
+    "city"      : "Tacoma",
+    "state"     : "Washington",
+    "stateab"   : "WA",
+    "zip"       : "98408",
+    "ActiveSite": "default2016"
+  },
+  "SocialMedia": {
+    "facebook" : "",
+    "twitter"   : "",
+    "linkedIn"  : "",
+    "youtube"   : ""
+  },
+  "Email": {
+    "smtp"  : "",
+    "port"  : ""
+  },
+  "APIKeys":{
+    "blizzard"  : "",
+    "google"    : ""
+  }
+}

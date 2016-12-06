@@ -1,0 +1,55 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Chubs
+ * Date: 12/6/2016
+ * Time: 6:39 AM
+ */
+function SetConfig() {
+    $string = file_get_contents(CONFIG_PATH);
+    $json = json_decode($string);
+    //MySQL Settings
+    DEFINE("MYSQLHost", $json->database->hostname);
+    DEFINE("MYSQLUser", $json->database->username);
+    DEFINE("MYSQLPass", $json->database->password);
+    DEFINE("MYSQLData", $json->database->database);
+    //Site Settings
+    DEFINE("SiteName", $json->SiteSettings->sitename);
+    DEFINE("Webmaster", $json->SiteSettings->webmaster);
+    DEFINE("ContactNO", $json->SiteSettings->contactno);
+    DEFINE("ActiveSite", $json->SiteSettings->ActiveSite);
+    //Social Media
+    DEFINE("FACEBOOK", $json->SocialMedia->facebook);
+    DEFINE("TWITTER", $json->SocialMedia->twitter);
+    DEFINE("LINKEDIN", $json->SocialMedia->linkedIn);
+    DEFINE("YOUTUBE", $json->SocialMedia->youtube);
+}
+function LoadClasses() {
+    foreach(glob(CLASS_DIR.'/*.class') as $classFile) {
+        require_once $classFile;
+    }
+}
+function LoadHooks() {
+    foreach(glob(HOOK_DIR.'/*.hook') as $hookFile) {
+        require_once $hookFile;
+    }
+}
+function ConvertURL($path) {
+    return str_replace(PUBLIC_DIR, "//".$_SERVER['HTTP_HOST'], $path);
+}
+function load_asset($asset) {
+    switch($asset) {
+        case "jquery": LoadJQuery(); break;
+        case "font-awesome": LoadFontAwesome(); break;
+    }
+}
+function LoadJQuery() {
+    echo "<script src='/assets/jquery-3.1.1.min.js'></script>".PHP_EOL;
+}
+function LoadFontAwesome() {
+    echo "<link href='assets/font-awesome-4.7.0/css/font-awesome.css' rel='stylesheet'>".PHP_EOL;
+}
+function LoadJQueryUI() {
+    echo "<link href='assets/jquery-ui/jquery-ui.css' rel='stylesheet'>".PHP_EOL;
+    echo "<script src='assets/jquery-ui/jquery-ui.js'></script>".PHP_EOL;
+}

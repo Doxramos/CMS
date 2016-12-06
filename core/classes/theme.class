@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: Chubs
+ * Date: 12/6/2016
+ * Time: 6:32 AM
+ */
+class theme
+{
+    public function LoadActiveTheme() {
+        $path = THEME_DIR.'/'.ActiveSite.'/index.php';
+        if(file_exists($path)) {
+            require_once $path;
+        } else {
+            die("Theme Could Not Load");
+        }
+    }
+    //User Calls
+    public function LoadCSS($path = "css", $mode = "recurse") {
+        switch($mode) {
+            case "recurse": $this->RecurseCSS($path); break;
+            case "single": $this->SingleCSS($path); break;
+        }
+    }
+    public function LoadJS($path = "js", $mode = "recurse") {
+        switch($mode) {
+            case "recurse": $this->RecurseJS($path); break;
+            case "single": $this->SingleJS($path); break;
+        }
+    }
+    public function LoadIco($path = "favicon.ico") {
+        $path = THEME_DIR.'/'.ActiveSite.'/'.$path;
+        echo "<link rel='icon' href='".ConvertURL($path)."'>";
+    }
+    //Automatic Calls
+    public function SingleCSS($path) {
+        $path = THEME_DIR.'/'.ActiveSite.'/'.$path;
+        echo "<link href='".ConvertURL($path)."' rel='stylesheet'>".PHP_EOL;
+    }
+    public function RecurseCSS($path) {
+        $path = THEME_DIR.'/'.ActiveSite.'/'.$path;
+        foreach(glob($path.'/*.css') as $stylesheet) {
+            echo "<link href='".ConvertURL($stylesheet)."' rel='stylesheet'>".PHP_EOL;
+        }
+    }
+    public function SingleJS($path) {
+        $path = THEME_DIR.'/'.ActiveSite.'/'.$path;
+        echo "<script src='".ConvertURL($path)."'></script>".PHP_EOL;
+    }
+    public function RecurseJS($path) {
+        $path = THEME_DIR.'/'.ActiveSite.'/'.$path;
+        foreach(glob($path.'/*.js') as $script) {
+            echo "<script src='".ConvertURL($script)."'></script>".PHP_EOL;
+        }
+    }
+    public function ThemeNav($folder = "nav", $type) {
+        require_once THEME_DIR.'/'.ActiveSite.'/'.$folder.'/'.$type;
+    }
+}
