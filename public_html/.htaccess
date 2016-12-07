@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# skip all files and directories from rewrite rules below
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteRule ^(\w+)/?$ index.php?viewPage=$1 [L,QSA]
+RewriteRule ^(\w+)/(\w+)/?$ index.php?viewPage=$1&ident=$2
+RewriteRule ^(\w+)/(\w+)/(\w+)/?$ index.php?viewPage=$1&ident=$2&ident2=$3 [L,QSA]

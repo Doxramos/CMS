@@ -6,11 +6,6 @@
  * Time: 6:33 AM
  */
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-//Set Path Directories
-
 DEFINE("BASE_DIR", dirname(__file__));
 DEFINE("CONFIG_PATH", BASE_DIR.'/config.json');
 //Set ADMIN Path
@@ -26,7 +21,8 @@ DEFINE("THEME_DIR", APP_DIR.'/themes');
 //Set Plugin Path
 require_once CORE_DIR.'/core.hook';
 SetConfig();
-//Load Database
+SetDebugMode();
+LoadDatabase("website");
 LoadClasses();
 LoadHooks();
 //TODO Along with Todo notes. Things to do will be placed in comments in individual files

@@ -1,0 +1,11 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Chubs
+ * Date: 12/7/2016
+ * Time: 8:02 AM
+ */
+function LoadContent($arg) {
+    $content = new content();
+    $content->GetContent($arg);
+}

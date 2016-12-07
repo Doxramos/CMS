@@ -18,6 +18,8 @@ function SetConfig() {
     DEFINE("Webmaster", $json->SiteSettings->webmaster);
     DEFINE("ContactNO", $json->SiteSettings->contactno);
     DEFINE("ActiveSite", $json->SiteSettings->ActiveSite);
+    //Add Address Info
+    DEFINE("DEBUGMODE", $json->SiteSettings->DEBUGMODE);
     //Social Media
     DEFINE("FACEBOOK", $json->SocialMedia->facebook);
     DEFINE("TWITTER", $json->SocialMedia->twitter);
@@ -34,6 +36,14 @@ function LoadHooks() {
         require_once $hookFile;
     }
 }
+function LoadDatabase($dbName) {
+    $path = CORE_DIR.'/'.$dbName.'.database.php';
+    if(file_exists($path)) {
+        require_once $path;
+    } else {
+        die("Could Not Load ".$dbName." Database");
+    }
+}
 function ConvertURL($path) {
     return str_replace(PUBLIC_DIR, "//".$_SERVER['HTTP_HOST'], $path);
 }
@@ -41,6 +51,7 @@ function load_asset($asset) {
     switch($asset) {
         case "jquery": LoadJQuery(); break;
         case "font-awesome": LoadFontAwesome(); break;
+        case "jqueryUI": LoadJQueryUI(); break;
     }
 }
 function LoadJQuery() {
@@ -53,3 +64,26 @@ function LoadJQueryUI() {
     echo "<link href='assets/jquery-ui/jquery-ui.css' rel='stylesheet'>".PHP_EOL;
     echo "<script src='assets/jquery-ui/jquery-ui.js'></script>".PHP_EOL;
 }
+function SetDebugMode($debugMode = DEBUGMODE) {
+    if($debugMode == true) {
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+    }
+}
+function SetPageTitle() {
+    if(!isset($_GET['ident'])) {
+        $ident = "home";
+    } else {
+        $ident = $_GET['ident'];
+    }
+}
+function PageTitle() {
+    if(!isset($_GET['viewPage'])) {
+        return "home";
+    } else {
+        return $_GET['viewPage'];
+    }
+}
+
+//TODO

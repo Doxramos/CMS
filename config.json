@@ -14,7 +14,8 @@
     "state"     : "Washington",
     "stateab"   : "WA",
     "zip"       : "98408",
-    "ActiveSite": "default2016"
+    "ActiveSite": "default2016",
+    "DEBUGMODE" : 1
   },
   "SocialMedia": {
     "facebook" : "",

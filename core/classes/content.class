@@ -8,5 +8,45 @@
  */
 class content
 {
+    public function __construct()
+    {
+        $this->webdb = new website_connection();
+    }
+    public function GetContent($arg) {
+        switch($arg) {
+            case "title": $this->GetTitle(PageTitle()); break;
+            case "body":  $this->GetBody(PageTitle()); break;
+        }
+    }
+    public function GetTitle($ident) {
+        $query = <<<SQL
+        SELECT title FROM pages WHERE ident = :ident
+SQL;
+        $resource = $this->webdb->db->prepare( $query );
+            $resource->execute( array (
+                ":ident"    => $ident,
+            ));
+            if($resource->rowCount() == 0 ) {
+                echo "Load 404";
+            } else {
+                $result = $resource->fetch(PDO::FETCH_ASSOC);
+                echo $result['title'];
+            }
 
+    }
+    public function GetBody($ident) {
+        $query = <<<SQL
+        SELECT body FROM pages WHERE ident = :ident
+SQL;
+        $resource = $this->webdb->db->prepare( $query );
+            $resource->execute( array (
+                ":ident"    => $ident,
+            ));
+            if($resource->rowCount() == 0) {
+                echo "Load 404";
+            } else {
+                $result = $resource->fetch(PDO::FETCH_ASSOC);
+                echo $result['body'];
+            }
+    }
 }
