@@ -71,19 +71,23 @@ function SetDebugMode($debugMode = DEBUGMODE) {
         error_reporting(E_ALL);
     }
 }
-function SetPageTitle() {
-    if(!isset($_GET['ident'])) {
-        $ident = "home";
-    } else {
-        $ident = $_GET['ident'];
-    }
-}
+
 function PageTitle() {
     if(!isset($_GET['viewPage'])) {
         return "home";
     } else {
         return $_GET['viewPage'];
     }
+}
+function IsOnline($arg = "session") {
+    switch($arg) {
+        case "session": return SessionOnline(); break;
+    }
+}
+function SessionOnline() {
+    if(!isset($_SESSION['user']['id'])) {
+        return false;
+    } else { return true; }
 }
 
 //TODO

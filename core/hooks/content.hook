@@ -9,3 +9,11 @@ function LoadContent($arg) {
     $content = new content();
     $content->GetContent($arg);
 }
+function CreateNavigation($menuName, $access) {
+    $content = new content();
+    $content->CreateNavigation($menuName, $access);
+}
+function GetPageTitle() {
+    $content = new content();
+    return $content->ReturnPageTitle();
+}

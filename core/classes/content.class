@@ -49,4 +49,73 @@ SQL;
                 echo $result['body'];
             }
     }
+    public function CreateNavigation($menuName, $access) {
+        $query = <<<SQL
+        SELECT ident,title FROM pages WHERE menu = :menuname AND access = :access
+SQL;
+        $resource = $this->webdb->db->prepare( $query );
+            $resource->execute( array (
+                ":menuname" => $menuName,
+                ":access"   => $access,
+            ));
+            foreach($resource as $row) {
+                if($row['ident'] == PageTitle()) {
+                    $class = "active";
+                } else { $class = ""; }
+                if($this->HasChildren($row['ident']) == false) {
+                    echo "<li class = '".$class."'><a href='" . $row['ident'] . "'>" . $row['title'] . "</a></li>";
+                } else {
+                    echo '<li class="dropdown">';
+                    echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$row['title'].' <span class="caret"></span></a>';
+                    echo '<ul class="dropdown-menu">';
+                    $this->GetChildren($row['ident']);
+                    echo '</ul>';
+                echo '</li>';
+                }
+            }
+    }
+    public function GetChildren($ident) {
+        $query = <<<SQL
+        SELECT ident,title FROM pages WHERE parent = :ident
+SQL;
+        $resource = $this->webdb->db->prepare( $query );
+            $resource->execute( array (
+                ":ident"    => $ident,
+            ));
+            foreach($resource as $row) {
+                echo "<li><a href='".$row['ident']."'>".$row['title']."</a></li>";
+            }
+    }
+    public function HasChildren($ident) {
+        $query = <<<SQL
+        SELECT ident FROM pages WHERE parent = :ident
+SQL;
+        $resource = $this->webdb->db->prepare( $query );
+            $resource->execute( array (
+                ":ident"    => $ident,
+            ));
+            if($resource->rowCount() == 0 ) {
+                return false;
+            } else {
+                return true;
+            }
+
+    }
+    public function ReturnPageTitle() {
+        $query = <<<SQL
+      SELECT title FROM pages WHERE ident = :pageTitle
+SQL;
+        $resource = $this->webdb->db->prepare( $query );
+            $resource->execute( array (
+                ":pageTitle"    => PageTitle(),
+            ));
+            if($resource->rowCount() == 0 ) {
+                return "Page Not Found";
+                //Todo Create Custom 404 Header
+            } else {
+                $result = $resource->fetch(PDO::FETCH_ASSOC);
+                return $result['title'];
+            }
+
+    }
 }

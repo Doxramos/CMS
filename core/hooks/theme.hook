@@ -25,3 +25,7 @@ function ThemeNav($folder = "nav", $type) {
     $theme = new theme();
     $theme->ThemeNav($folder, $type);
 }
+function LoadThemeFile($file) {
+    $theme = new theme();
+    $theme->LoadThemeFile($file);
+}

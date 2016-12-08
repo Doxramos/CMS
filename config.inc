@@ -6,6 +6,7 @@
  * Time: 6:33 AM
  */
 session_start();
+$_SESSION['user']['id'] = 1;
 DEFINE("BASE_DIR", dirname(__file__));
 DEFINE("CONFIG_PATH", BASE_DIR.'/config.json');
 //Set ADMIN Path

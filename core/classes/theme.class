@@ -16,6 +16,12 @@ class theme
             die("Theme Could Not Load");
         }
     }
+    public function LoadThemeFile($file) {
+        $path = THEME_DIR.'/'.ActiveSite.'/'.$file;
+        if(file_exists($path)) {
+            include $path;
+        }
+    }
     //User Calls
     public function LoadCSS($path = "css", $mode = "recurse") {
         switch($mode) {
