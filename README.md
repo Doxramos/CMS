@@ -3,7 +3,7 @@
 |-----|-------|-------|
 | Build |add tag|[![Join the chat at https://gitter.im/Doxramos/CMS](https://badges.gitter.im/Doxramos/CMS.svg)](https://gitter.im/Doxramos/CMS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)|
 |Dependancies| [Bootstrap](https://www.getbootstrap.com),[JQuery](https://www.code.jquery.com)  | |
-|Open Issues | add tag | add tag |
+|Open Issues | [![Percentage of issues still open](http://isitmaintained.com/badge/open/doxramos/cms.svg)](http://isitmaintained.com/project/doxramos/cms "Percentage of issues still open") | [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/doxramos/cms.svg)](http://isitmaintained.com/project/doxramos/cms "Average time to resolve an issue") |
 
 [TOC]
 
