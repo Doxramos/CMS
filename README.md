@@ -1,16 +1,14 @@
 #Doxramos CMS
-|| Master | Beta | Gitter Tag
-|--------|--------|
-|Build|   add tag     |   add tag     |
+| Master | Beta | Gitter Tag|
+|-----|-------|-------|
+| Build |add tag|add tag|
 |Dependancies| add tag | add tag |
 |Open Issues | add tag | add tag |
 
 [TOC]
 
 
-|Core Plugins| Build|Link|
-|------|------|
-|Account Plugin|build tag|Link|
+
 Have something to add? Visit our [Wiki](wiki)!
 ### What is Doxramos CMS?
 
