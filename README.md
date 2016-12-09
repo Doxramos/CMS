@@ -7,7 +7,7 @@
 
 [TOC]
 
-Have something to add? Visit our [Wiki](wiki)!
+Have something to add? Visit our [Wiki](https://github.com/Doxramos/CMS/wiki)!
 ### What is Doxramos CMS?
 Doxramos CMS is a Content Management System designed to be purely customizable by the user.
 Plugin and module creation handles almost all aspects of the CMS in regards to login and account creation,
