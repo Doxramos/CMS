@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <?php LoadActivePlugins("pre"); ?>
+    <?php load_asset("font-awesome"); ?>
     <title><?php echo GetPageTitle(); ?></title>
 
     <!-- Bootstrap Core CSS -->
@@ -25,7 +26,6 @@
 </head>
 
 <body>
-
 <?php ThemeNav("nav", "default.inc"); ?>
 
 <!-- Image Background Page Header -->
@@ -107,6 +107,7 @@
 <?php load_asset("jquery"); ?>
 <!-- Bootstrap Core JavaScript -->
 <?php LoadThemeJS("js/bootstrap.js", "single"); ?>
+<?php LoadActivePlugins("post"); ?>
 
 </body>
 

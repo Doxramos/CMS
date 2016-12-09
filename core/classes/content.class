@@ -30,7 +30,11 @@ SQL;
                 echo "Load 404";
             } else {
                 $result = $resource->fetch(PDO::FETCH_ASSOC);
-                echo $result['title'];
+                if(is_callable($result['title'])) {
+                 echo $result['title'](); }
+                else {
+                    echo $result['title'];
+                }
             }
 
     }
@@ -46,7 +50,11 @@ SQL;
                 echo "Load 404";
             } else {
                 $result = $resource->fetch(PDO::FETCH_ASSOC);
-                echo $result['body'];
+                if(is_callable($result['body'])) {
+                    echo $result['body']();
+                } else {
+                    echo $result['body'];
+                }
             }
     }
     public function CreateNavigation($menuName, $access) {
@@ -63,10 +71,20 @@ SQL;
                     $class = "active";
                 } else { $class = ""; }
                 if($this->HasChildren($row['ident']) == false) {
-                    echo "<li class = '".$class."'><a href='" . $row['ident'] . "'>" . $row['title'] . "</a></li>";
+                    if(is_callable($row['title'])) {
+                        echo "<li class = '" . $class . "'><a href='" . $row['ident'] . "'>" . $row['title']() . "</a></li>";
+
+                    } else {
+                        echo "<li class = '" . $class . "'><a href='" . $row['ident'] . "'>" . $row['title'] . "</a></li>";
+                    }
                 } else {
                     echo '<li class="dropdown">';
-                    echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$row['title'].' <span class="caret"></span></a>';
+                    if(is_callable($row['title'])) {
+                        echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $row['title']() . ' <span class="caret"></span></a>';
+                    }
+                    else {
+                        echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$row['title'].' <span class="caret"></span></a>';
+                    }
                     echo '<ul class="dropdown-menu">';
                     $this->GetChildren($row['ident']);
                     echo '</ul>';
@@ -83,7 +101,11 @@ SQL;
                 ":ident"    => $ident,
             ));
             foreach($resource as $row) {
-                echo "<li><a href='".$row['ident']."'>".$row['title']."</a></li>";
+                if(is_callable($row['title'])) {
+                    echo "<li><a href='".$row['ident']."'>".$row['title']()."</a></li>";
+                } else {
+                    echo "<li><a href='".$row['ident']."'>".$row['title']."</a></li>";
+                }
             }
     }
     public function HasChildren($ident) {
@@ -114,7 +136,11 @@ SQL;
                 //Todo Create Custom 404 Header
             } else {
                 $result = $resource->fetch(PDO::FETCH_ASSOC);
-                return $result['title'];
+                if(is_callable($result['title'])) {
+                    return $result['title']();
+                } else {
+                    return $result['title'];
+                }
             }
 
     }

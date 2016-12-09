@@ -89,5 +89,8 @@ function SessionOnline() {
         return false;
     } else { return true; }
 }
-
+function UserID() {
+    return $_SESSION['user']['id'];
+}
+//todo create plugin for account menu
 //TODO

@@ -1,0 +1,19 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Chubs
+ * Date: 12/8/2016
+ * Time: 8:37 AM
+ */
+function LoadActivePlugins($arg) {
+    $plugin = new plugin();
+    $plugin->LoadActivePlugins($arg);
+}
+function PluginLoad($pluginPath, $filePath) {
+    $plugin = new plugin();
+    $plugin->PluginLoad($pluginPath, $filePath);
+}
+function PluginURL($path) {
+    $plugin = new plugin();
+    return $plugin->PluginURL($path);
+}

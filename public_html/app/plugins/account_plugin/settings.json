@@ -1,0 +1,12 @@
+{
+  "pluginDetails": {
+    "name": "Account Manager",
+    "author": "Doxramos",
+    "rev_date": "12/8/2016"
+  },
+  "pluginSettings": {
+    "enabled" : 1,
+    "basefile": "index.php",
+    "scriptfile": "scripts.php"
+  }
+}

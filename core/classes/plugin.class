@@ -8,5 +8,35 @@
  */
 class plugin
 {
-
+    public function LoadActivePlugins($arg) {
+        $path = PLUG_DIR.'/*/settings.json';
+        foreach(glob($path) as $settingsFile) {
+            $string = file_get_contents($settingsFile);
+            $json = json_decode($string, true);
+            if($json['pluginSettings']['enabled'] == true) {
+                $preFile = str_replace("settings.json", $json['pluginSettings']['basefile'], $settingsFile);
+                $postFile = str_replace("settings.json", $json['pluginSettings']['scriptfile'], $settingsFile);
+                switch($arg) {
+                    case "pre": $this->LoadFile($preFile); break;
+                    case "post": $this->LoadFile($postFile); break;
+                }
+            }
+        }
+    }
+    public function LoadFile($path) {
+        if(file_exists($path)) {
+        require_once $path; }
+    }
+    public function PluginLoad($pluginPath, $filePath) {
+        $path = $pluginPath.'/'.$filePath;
+        if(file_exists($path)) {
+            require_once $path;
+        }
+    }
+    public function PluginURL($path) {
+        $public = str_replace("/", "\\", PUBLIC_DIR);
+        $path = str_replace($public, "//".$_SERVER['HTTP_HOST'], $path);
+        $final = str_replace("\\", "/", $path);
+        return $final;
+    }
 }

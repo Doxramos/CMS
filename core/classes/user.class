@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: Chubs
+ * Date: 12/8/2016
+ * Time: 9:30 AM
+ */
+class user
+{
+    public function __construct()
+    {
+        $this->webdb = new website_connection();
+    }
+    public function UserDetail($arg, $userID) {
+        $query = <<<SQL
+SELECT username,regmail,email FROM accounts WHERE id = :userID
+SQL;
+        $resource = $this->webdb->db->prepare( $query );
+            $resource->execute( array (
+                ":userID"   => $userID,
+            ));
+        if($resource->rowCount() == 0 ) {
+            return "User Not Found";
+        } else {
+            $result = $resource->fetch(PDO::FETCH_ASSOC);
+            switch($arg) {
+                case "gravatar": echo "create grav function"; break;
+                default: return $result[$arg]; break;
+            }
+        }
+    }
+}
