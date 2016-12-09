@@ -1,4 +1,6 @@
 #Doxramos CMS
+
+[![Join the chat at https://gitter.im/Doxramos/CMS](https://badges.gitter.im/Doxramos/CMS.svg)](https://gitter.im/Doxramos/CMS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 | Master | Beta | Gitter Tag|
 |-----|-------|-------|
 | Build |add tag|add tag|
