@@ -2,7 +2,7 @@
 | Master | Beta | Gitter Tag|
 |-----|-------|-------|
 | Build |add tag|[![Join the chat at https://gitter.im/Doxramos/CMS](https://badges.gitter.im/Doxramos/CMS.svg)](https://gitter.im/Doxramos/CMS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)|
-|Dependancies| [![Bootstap](http://www.continued-learning.com/img/logos/bootstrap.png =50)](https://gitter.im/Doxramos/CMS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) | add tag |
+|Dependancies| [Bootstrap](www.getbootstrap.com)!,[JQuery](www.code.jquery.com)!  | add tag |
 |Open Issues | add tag | add tag |
 
 [TOC]
