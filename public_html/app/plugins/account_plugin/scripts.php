@@ -53,13 +53,5 @@ echo '<script>
            }
        });
    }
-       function CallLogout() {
-           var i = document.getElementById('counter');
-           if (parseInt(i.innerHTML)<=0) {
-               location.href = '/';
-           }
-           i.innerHTML = parseInt(i.innerHTML)-1;
-       }
-   setInterval(function(){ CallLogout(); },1000);
 </script>
 <!--TODO Change Logout Function to automatic on Page Visit. Remove Jquery req -->
