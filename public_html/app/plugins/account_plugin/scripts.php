@@ -8,6 +8,7 @@
 echo '<script>
            var ajaxURL = "'. PluginURL(ACCOUNT_PLUGIN_PATH) .'" + "/functions.php";
       </script>';
+//Todo Fix Ajax URL
 ?>
 <script>
    $("#logout").click(function(e) {
