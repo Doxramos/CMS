@@ -18,6 +18,8 @@ function SetConfig() {
     DEFINE("Webmaster", $json->SiteSettings->webmaster);
     DEFINE("ContactNO", $json->SiteSettings->contactno);
     DEFINE("ActiveSite", $json->SiteSettings->ActiveSite);
+    DEFINE("SLOGAN", $json->SiteSettings->slogan);
+    DEFINE("CopyRight", $json->SiteSettings->copyright);
     //Add Address Info
     DEFINE("DEBUGMODE", $json->SiteSettings->DEBUGMODE);
     //Social Media
@@ -25,6 +27,7 @@ function SetConfig() {
     DEFINE("TWITTER", $json->SocialMedia->twitter);
     DEFINE("LINKEDIN", $json->SocialMedia->linkedIn);
     DEFINE("YOUTUBE", $json->SocialMedia->youtube);
+    DEFINE("TWITCH", $json->SocialMedia->twitch);
 }
 function LoadClasses() {
     foreach(glob(CLASS_DIR.'/*.class') as $classFile) {
@@ -91,6 +94,9 @@ function SessionOnline() {
 }
 function UserID() {
     return $_SESSION['user']['id'];
+}
+function ParseCopyrightYear($string) {
+    return str_replace("{year}", date('Y'), $string);
 }
 //todo create plugin for account menu
 //TODO

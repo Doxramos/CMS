@@ -59,7 +59,7 @@ SQL;
     }
     public function CreateNavigation($menuName, $access) {
         $query = <<<SQL
-        SELECT ident,title FROM pages WHERE menu = :menuname AND access = :access
+        SELECT ident,title,span FROM pages WHERE menu = :menuname AND access = :access
 SQL;
         $resource = $this->webdb->db->prepare( $query );
             $resource->execute( array (
@@ -72,18 +72,18 @@ SQL;
                 } else { $class = ""; }
                 if($this->HasChildren($row['ident']) == false) {
                     if(is_callable($row['title'])) {
-                        echo "<li class = '" . $class . "'><a href='" . $row['ident'] . "'>" . $row['title']() . "</a></li>";
+                        echo "<li class = '" . $class . "'><a href='" . $row['ident'] . "'><i class='fa fa-".$row['span']."'></i> " . $row['title']() . "</a></li>";
 
                     } else {
-                        echo "<li class = '" . $class . "'><a href='" . $row['ident'] . "'>" . $row['title'] . "</a></li>";
+                        echo "<li class = '" . $class . "'><a href='" . $row['ident'] . "'><i class='fa fa-".$row['span']."'></i> " . $row['title'] . "</a></li>";
                     }
                 } else {
                     echo '<li class="dropdown">';
                     if(is_callable($row['title'])) {
-                        echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $row['title']() . ' <span class="caret"></span></a>';
+                        echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-'.$row['span'].'"></i> ' . $row['title']() . ' <span class="caret"></span></a>';
                     }
                     else {
-                        echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$row['title'].' <span class="caret"></span></a>';
+                        echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-'.$row['span'].'"></i> '.$row['title'].' <span class="caret"></span></a>';
                     }
                     echo '<ul class="dropdown-menu">';
                     $this->GetChildren($row['ident']);
@@ -94,7 +94,7 @@ SQL;
     }
     public function GetChildren($ident) {
         $query = <<<SQL
-        SELECT ident,title FROM pages WHERE parent = :ident
+        SELECT ident,title,span FROM pages WHERE parent = :ident
 SQL;
         $resource = $this->webdb->db->prepare( $query );
             $resource->execute( array (
@@ -102,9 +102,9 @@ SQL;
             ));
             foreach($resource as $row) {
                 if(is_callable($row['title'])) {
-                    echo "<li><a href='".$row['ident']."'>".$row['title']()."</a></li>";
+                    echo "<li><a href='".$row['ident']."'> ".$row['title']()."</a></li>";
                 } else {
-                    echo "<li><a href='".$row['ident']."'>".$row['title']."</a></li>";
+                    echo "<li><a href='".$row['ident']."'> ".$row['title']."</a></li>";
                 }
             }
     }

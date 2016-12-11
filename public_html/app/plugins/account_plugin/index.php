@@ -15,6 +15,9 @@ function account_plugin_username() {
 function account_plugin_logout() {
     return "<nav id='logout'>Logout</nav>";
 }
+function account_logout_function() {
+    PluginLoad(ACCOUNT_PLUGIN_PATH, "panels/logout.inc");
+}
 function account_plugin_messages_body() {
     return "Create Panel";
 }

@@ -22,7 +22,7 @@ echo '<script>
        $.ajax({
            url : ajaxURL,
            type: "POST",
-           data : $("#login_form_action").serialize(),
+           data : $("#login_fmorm_action").serialize(),
            beforeSend: function() {
              $("#login_error").hide();
              $("#login_cog").show();
@@ -53,5 +53,13 @@ echo '<script>
            }
        });
    }
+       function CallLogout() {
+           var i = document.getElementById('counter');
+           if (parseInt(i.innerHTML)<=0) {
+               location.href = '/';
+           }
+           i.innerHTML = parseInt(i.innerHTML)-1;
+       }
+   setInterval(function(){ CallLogout(); },1000);
 </script>
 <!--TODO Change Logout Function to automatic on Page Visit. Remove Jquery req -->

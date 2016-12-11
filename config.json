@@ -6,7 +6,7 @@
     "database"  : "website"
   },
   "SiteSettings": {
-    "sitename"  : "Doxramos.net",
+    "sitename"  : "FMS_Gamers",
     "webmaster" : "green.morgan87@gmail.com",
     "contactno" : "(253)275-8409",
     "address"   : "5605 S M Street",
@@ -15,13 +15,16 @@
     "stateab"   : "WA",
     "zip"       : "98408",
     "ActiveSite": "default2016",
-    "DEBUGMODE" : 1
+    "DEBUGMODE" : 1,
+    "slogan"    : "We're the frackin' Munstars!",
+    "copyright" : "FMS Gaming {year}. All Rights Reserved."
   },
   "SocialMedia": {
-    "facebook" : "",
-    "twitter"   : "",
+    "facebook" : "fms_gamers",
+    "twitter"   : "fms_gamers",
     "linkedIn"  : "",
-    "youtube"   : ""
+    "youtube"   : "",
+    "twitch"    : ""
   },
   "Email": {
     "smtp"  : "",

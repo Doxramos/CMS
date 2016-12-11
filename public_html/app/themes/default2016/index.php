@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="tagline">Business Name or Tagline</h1>
+                <h1 class="tagline"><?php echo SLOGAN; ?></h1>
             </div>
         </div>
     </div>
@@ -44,57 +44,32 @@
 <div class="container">
 
     <hr>
-
-    <div class="row">
-        <div class="col-sm-8">
-            <h2><?php LoadContent("title"); ?></h2>
-            <?php LoadContent("body"); ?>
+<div class="col-xs-10">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h2><?php LoadContent("title"); ?></h2>
         </div>
-        <div class="col-sm-4">
-            <h2>Contact Us</h2>
-            <address>
-                <strong>Start Bootstrap</strong>
-                <br>3481 Melrose Place
-                <br>Beverly Hills, CA 90210
-                <br>
-            </address>
-            <address>
-                <abbr title="Phone">P:</abbr><?php echo ContactNO; ?>
-                <br>
-                <abbr title="Email">E:</abbr> <a href="mailto:<?php echo Webmaster; ?>"><?php echo Webmaster; ?></a>
-            </address>
+        <div class="panel-body"> <?php LoadContent("body"); ?>
         </div>
     </div>
-    <!-- /.row -->
-
-    <hr>
-
-    <div class="row">
-        <div class="col-sm-4">
-            <img class="img-circle img-responsive img-center" src="http://placehold.it/300x300" alt="">
-            <h2>Marketing Box #1</h2>
-            <p>These marketing boxes are a great place to put some information. These can contain summaries of what the company does, promotional information, or anything else that is relevant to the company. These will usually be below-the-fold.</p>
-        </div>
-        <div class="col-sm-4">
-            <img class="img-circle img-responsive img-center" src="http://placehold.it/300x300" alt="">
-            <h2>Marketing Box #2</h2>
-            <p>The images are set to be circular and responsive. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-        </div>
-        <div class="col-sm-4">
-            <img class="img-circle img-responsive img-center" src="http://placehold.it/300x300" alt="">
-            <h2>Marketing Box #3</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-        </div>
+</div>
+    <div class="col-xs-2">
+        <!--TODO Create Module Loader, this location = sidebar_right-->
     </div>
-    <!-- /.row -->
-
-    <hr>
 
     <!-- Footer -->
     <footer>
         <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; Your Website 2014</p>
+                <p><?php
+                    if(TWITTER != "") {
+                        echo "<i class='fa fa-twitter fa-3x'></i>";
+                    }
+                    if(FACEBOOK != "") {
+                        echo "<i class='fa fa-facebook fa-3x'></i>";
+                    }
+                    ?></p>
+                <p><?php echo ParseCopyrightYear(CopyRight); ?></p>
+
             </div>
         </div>
         <!-- /.row -->
@@ -112,3 +87,4 @@
 </body>
 
 </html>
+<!--TODO Push footer to bottom of page-->
