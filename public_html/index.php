@@ -7,3 +7,4 @@
  */
 require_once "../config.inc";
 LoadActiveTheme();
+//TODO Possibly move all included theme and plugin files outside of webroot and only have css and images in public folder SECURITY PATCH

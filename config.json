@@ -15,7 +15,7 @@
     "stateab"   : "WA",
     "zip"       : "98408",
     "ActiveSite": "default2016",
-    "DEBUGMODE" : 1,
+    "DEBUGMODE" : 0,
     "slogan"    : "We're the frackin' Munstars!",
     "copyright" : "FMS Gaming {year}. All Rights Reserved."
   },
